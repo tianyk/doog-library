@@ -1,11 +1,10 @@
 package main
 
 import (
-	_ "hello/routers"
+	_ "doog-library/routers"
 	"github.com/astaxie/beego"
 )
 
 func main() {
 	beego.Run()
 }
-
