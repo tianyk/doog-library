@@ -10,10 +10,10 @@ type Book struct {
 /**
  * 构造函数
  */
-func NewBook() {
+func NewBook() *Book {
 	return &Book{}
 }
 
-func (b *Book) FindById() (Book, error) {
+// func (b *Book) FindById() (Book, error) {
 
-}
+// }

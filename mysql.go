@@ -15,7 +15,7 @@ func checkError(err error) {
 	}
 }
 
-func main() {
+func run() {
 	// Open database connection
 	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/world?charset=utf8")
 	checkError(err)
