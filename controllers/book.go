@@ -1,9 +1,10 @@
+// BookController
 package controllers
 
 import (
 	. "doog-library/models"
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/validation"
+	// "github.com/astaxie/beego/validation"
 	"log"
 	// "strconv"
 )
@@ -12,37 +13,20 @@ type BookController struct {
 	beego.Controller
 }
 
-/**
- * 获取图书信息
- * @param  {[type]} this *BookController) View( [description]
- * @return {[type]}      [description]
- */
+// 获取图书信息
 func (this *BookController) View() {
 	id := this.Ctx.Input.Param(":id")
-	valid := validation.Validation{}
-	valid.MinSize(id, 6, "id")
 
-	if valid.HasErrors() {
-		for _, err := range valid.Errors {
-			log.Println(err.Key, err.Message)
-		}
-	}
-
-	// id2, _ := strconv.ParseInt(id, 10, 32)
-	log.Println(id)
-	this.Ctx.WriteString(id)
+	book := NewBook().FindById(id)
+	this.Data["json"] = book
+	this.ServeJson()
 }
 
-/**
- * 获取图书的拥有情况
- * @param  {[type]} this *BookController) Collections( [description]
- * @return {[type]}      [description]
- */
+// 获取图书的拥有情况
 func (this *BookController) Collections() {
 	id := this.Ctx.Input.Param(":id")
-	// select * from colections where book_id = id;
-	colections := []Collection{Collection{id, "12306", "loan"}, Collection{id, "12306", "lose"}}
-	log.Println(id)
-	this.Data["json"] = &colections
+	log.Printf("Book ID is %s", id)
+	collections := NewCollection().FindBookCollectionsByBookId(id)
+	this.Data["json"] = collections
 	this.ServeJson()
 }

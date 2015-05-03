@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func checkError(err error) {
+func CheckError(err error) {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
 		// os.Exit(1)
@@ -16,8 +16,7 @@ func checkError(err error) {
 }
 
 func GetConnection() *sql.DB {
-	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/world?charset=utf8")
-	checkError(err)
-
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/doog_library?charset=utf8")
+	CheckError(err)
 	return db
 }
