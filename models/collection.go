@@ -1,31 +1,16 @@
 package models
 
-import (
-	. "doog-library/utils"
-)
-
 type Collection struct {
-	BookId string
-	UserId string
-	State  string
+	BookId string `form:"bookId" json:"book_id" xorm:"string(10) pk not null autoincr"`
+	UserId string `form:"userId" json:"user_id" xorm:"string(10) pk not null autoincr"`
+	State  string `form:"state" json:"state" xorm:"varchar(10) not null"`
 }
 
-func NewCollection() *Collection {
-	return new(Collection)
+func (c *Collection) TableName() string {
+	return "sys_collection"
 }
 
-func (c *Collection) FindBookCollectionsByBookId(book_id string) []Collection {
-	db := GetConnection()
-	rows, err := db.Query("SELECT * FROM SYS_COLLECTION WHERE BOOK_ID = ?", book_id)
-	CheckError(err)
-	defer rows.Close()
-
-	collections := make([]Collection, 0, 10)
-	for rows.Next() {
-		var bookId, userId, state string
-		rows.Scan(&bookId, &userId, &state)
-		collections = append(collections, Collection{bookId, userId, state})
-	}
-
-	return collections
+func (self *Collection) FindCollectionsByBookId(bookId string) (collections []*Collection, err error) {
+	err = orm.Where("book_id = ?", bookId).Find(&collections)
+	return
 }
