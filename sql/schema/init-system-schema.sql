@@ -26,10 +26,11 @@ constraint `pk_sys_book` primary key(`book_id`)
 alter table `sys_book` auto_increment=100000;
 
 ##collection
+drop table if exists `sys_collection`;
 create table `sys_collection`(
 `book_id` bigint not null,
 `user_id` bigint not null,
-`state` varchar(10) not null,
+`state` varchar(10) not null default 'await',
 constraint `pk_sys_collection` primary key(`book_id`, `user_id`),
 constraint `fk_sys_collection_sys_user_user_id` foreign key (`user_id`) references `sys_user` (`user_id`),
 constraint `fk_sys_collection_sys_book_book_id` foreign key (`book_id`) references `sys_book` (`book_id`)

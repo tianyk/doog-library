@@ -5,3 +5,4 @@
 - github.com/beego/bee
 - github.com/astaxie/beego
 - github.com/go-sql-driver/mysql
+- github.com/go-xorm/xorm

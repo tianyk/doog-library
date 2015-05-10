@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
+	"log"
 )
 
 type MainController struct {
@@ -16,4 +17,10 @@ func (c *MainController) Get() {
 
 func (c *MainController) Post() {
 
+}
+
+func checkError(err error) {
+	if err != nil {
+		log.Panicf("BookController Error %v", err)
+	}
 }
