@@ -1,8 +1,8 @@
 package models
 
 type Collection struct {
-	BookId int64  `valid:"Required;" form:"bookId" json:"book_id" xorm:"BigInt pk not null autoincr"`
-	UserId int64  `valid:"Required;" form:"userId" json:"user_id" xorm:"BigInt pk not null autoincr"`
+	BookId int64  `valid:"Required;" form:"bookId" json:"book_id" xorm:"BigInt pk not null"`
+	UserId int64  `valid:"Required;" form:"userId" json:"user_id" xorm:"BigInt pk not null"`
 	State  string `form:"state" json:"state" xorm:"varchar(10) not null default 'await'"`
 }
 

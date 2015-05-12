@@ -53,3 +53,11 @@ constraint `fk_sys_brrow_history_sys_user_owner_user_id` foreign key (`owner_use
 constraint `fk_sys_brrow_history_sys_book_book_id` foreign key (`book_id`) references `sys_book` (`book_id`)
 ) charset=utf8 ENGINE=InnoDB;
 alter table `sys_brrow_history` auto_increment=100000;
+
+-- `brrow_history_id` 借阅历史ID
+-- `book_id` 图书ID
+-- `owner_user_id` 图书拥有者ID
+-- `user_id` 借书人
+-- `loan_at` 借出时间
+-- `return_at` 归还时间
+-- `state` 状态

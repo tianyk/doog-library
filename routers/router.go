@@ -14,4 +14,6 @@ func init() {
 	beego.Router("/book/:id(^[0-9]+$)/collections", new(BookController), "get:Collections")
 
 	beego.Router("/collection", new(CollectionController), "post:Create")
+
+	beego.Router("/brrow", new(BrrowHistoryController), "post:Create")
 }

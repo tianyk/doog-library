@@ -5,23 +5,23 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/validation"
 	"log"
+	// "strconv"
 )
 
-type CollectionController struct {
+type BrrowHistoryController struct {
 	beego.Controller
 }
 
-//
-func (this *CollectionController) Create() {
-	collection := new(Collection)
-	err := this.ParseForm(collection)
+func (this *BrrowHistoryController) Create() {
+	brrowHistory := new(BrrowHistory)
+	err := this.ParseForm(brrowHistory)
+
 	checkError(err)
 
 	valid := validation.Validation{}
 	var b bool
-	b, err = valid.Valid(collection)
+	b, err = valid.Valid(brrowHistory)
 	checkError(err)
-
 	if !b {
 		for _, err := range valid.Errors {
 			log.Println(err.Key, err.Message)
@@ -31,9 +31,9 @@ func (this *CollectionController) Create() {
 		return
 	}
 
-	err = collection.Save()
+	err = brrowHistory.Save()
 	checkError(err)
 
-	this.Data["json"] = collection
+	this.Data["json"] = brrowHistory
 	this.ServeJson()
 }
