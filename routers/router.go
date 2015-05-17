@@ -1,8 +1,8 @@
 package routers
 
 import (
-	. "doog-library/controllers"
 	"github.com/astaxie/beego"
+	. "github.com/tianyk/doog-library/controllers"
 )
 
 func init() {

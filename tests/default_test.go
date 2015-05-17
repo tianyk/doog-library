@@ -1,7 +1,7 @@
 package test
 
 import (
-	_ "doog-library/routers"
+	_ "github.com/tianyk/doog-library/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"

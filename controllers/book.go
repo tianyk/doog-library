@@ -2,9 +2,9 @@
 package controllers
 
 import (
-	. "doog-library/models"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/validation"
+	. "github.com/tianyk/doog-library/models"
 	"log"
 	"strconv"
 )
